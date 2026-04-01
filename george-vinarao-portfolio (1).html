@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>George Vinarao — Shopify E-commerce VA</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg:      #f7f5f0;
+  --bg-alt:  #f0ede5;
+  --ink:     #0e0d0c;
+  --ink-2:   #3d3b37;
+  --ink-3:   #8a8780;
+  --gold:    #a07840;
+  --gold-lt: #c9a06a;
+  --gold-bg: rgba(160,120,64,.07);
+  --white:   #ffffff;
+  --border:  rgba(14,13,12,.09);
+  --bdr-s:   rgba(14,13,12,.05);
+  --sh-s:    0 2px 12px rgba(14,13,12,.06);
+  --sh-m:    0 8px 32px rgba(14,13,12,.1);
+  --sh-l:    0 20px 60px rgba(14,13,12,.13);
+  --r:       18px;
+  --rs:      10px;
+  --serif:   'Fraunces',Georgia,serif;
+  --sans:    'Plus Jakarta Sans',system-ui,sans-serif;
+  --nh:      68px;
+  --max:     1120px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+
+/* ── PROGRESS ── */
+#prog{position:fixed;top:0;left:0;z-index:200;height:2px;width:0%;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transition:width .1s linear}
+
+/* ── CURSOR ── */
+#cur{position:fixed;top:0;left:0;z-index:9999;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;transition:transform .12s ease;mix-blend-mode:multiply}
+@media(hover:none){#cur{display:none}}
+
+/* ── NAV ── */
+nav{position:fixed;inset:0 0 auto;z-index:100;height:var(--nh);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1.5rem,5vw,4rem);background:rgba(247,245,240,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--bdr-s);transition:box-shadow .3s}
+nav.sc{box-shadow:var(--sh-m)}
+.n-logo{font-family:var(--serif);font-size:1.25rem;font-weight:600;letter-spacing:-.01em}
+.n-logo em{font-style:italic;color:var(--gold)}
+.n-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.n-links a{font-size:.78rem;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);transition:color .2s;position:relative}
+.n-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s ease}
+.n-links a:hover{color:var(--ink)}
+.n-links a:hover::after{transform:scaleX(1)}
+.n-hire{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem 1.4rem;background:var(--ink);color:var(--bg)!important;border-radius:50px;font-size:.78rem!important;font-weight:600!important;letter-spacing:.04em!important;transition:background .2s,transform .2s,box-shadow .2s!important}
+.n-hire::after{display:none!important}
+.n-hire:hover{background:var(--gold)!important;transform:translateY(-1px)!important;box-shadow:0 6px 20px rgba(160,120,64,.3)!important}
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.ham span{width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:transform .3s,opacity .3s;display:block}
+@media(max-width:780px){
+  .n-links{position:fixed;inset:var(--nh) 0 0;flex-direction:column;justify-content:center;gap:2rem;background:var(--bg);transform:translateY(-110%);transition:transform .45s cubic-bezier(.76,0,.24,1);pointer-events:none}
+  .n-links.open{transform:none;pointer-events:all}
+  .n-links a{font-size:1rem}
+  .ham{display:flex}
+}
+
+/* ── LAYOUT ── */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.5rem,5vw,4rem)}
+section{padding:7rem 0}
+.ey{display:inline-flex;align-items:center;gap:.6rem;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem}
+.ey::before{content:'';width:22px;height:1.5px;background:var(--gold)}
+h2.sh{font-family:var(--serif);font-size:clamp(2rem,4vw,2.9rem);font-weight:600;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:.9rem}
+h2.sh em{font-style:italic;color:var(--gold);font-weight:300}
+.sub{font-size:.95rem;color:var(--ink-3);line-height:1.8;max-width:480px;margin-bottom:3rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.9rem;border-radius:50px;font-family:var(--sans);font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:all .25s ease;letter-spacing:.01em}
+.btn-dk{background:var(--ink);color:var(--bg)}
+.btn-dk:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,120,64,.28)}
+.btn-gh{background:transparent;color:var(--ink);border:1.5px solid var(--border)}
+.btn-gh:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+
+/* ── HERO ── */
+#hero{min-height:100svh;padding-top:var(--nh);display:flex;align-items:center;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:-50%;width:200%;height:200%;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.03'/%3E%3C/svg%3E");pointer-events:none;opacity:.4}
+.h-inner{width:100%;display:grid;grid-template-columns:1fr 400px;gap:3rem;align-items:center;padding:4rem 0}
+.h-left{position:relative}
+.avail-chip{display:inline-flex;align-items:center;gap:.5rem;padding:.38rem .9rem .38rem .5rem;background:var(--white);border:1px solid var(--border);border-radius:50px;font-size:.72rem;font-weight:600;color:var(--ink-2);margin-bottom:2rem;box-shadow:var(--sh-s);opacity:0;animation:fu .6s .15s forwards}
+.a-dot{width:7px;height:7px;border-radius:50%;background:#3cbc74;box-shadow:0 0 0 3px rgba(60,188,116,.2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(60,188,116,.2)}50%{box-shadow:0 0 0 6px rgba(60,188,116,.08)}}
+h1.hh{font-family:var(--serif);font-size:clamp(3.2rem,6.5vw,5.2rem);font-weight:600;line-height:1.02;letter-spacing:-.025em;color:var(--ink);margin-bottom:1.4rem;opacity:0;animation:fu .7s .3s forwards}
+h1.hh em{font-style:italic;font-weight:300;color:var(--gold);display:block}
+.h-desc{font-size:1.02rem;color:var(--ink-3);line-height:1.8;max-width:500px;margin-bottom:2.5rem;opacity:0;animation:fu .7s .45s forwards}
+.h-acts{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:3.5rem;opacity:0;animation:fu .7s .6s forwards}
+.h-stats{display:flex;flex-wrap:wrap;border-top:1px solid var(--border);padding-top:2rem;opacity:0;animation:fu .7s .75s forwards}
+.hs{padding-right:2.5rem;margin-right:2.5rem;border-right:1px solid var(--border)}
+.hs:last-child{border-right:none;padding-right:0;margin-right:0}
+.hs-n{font-family:var(--serif);font-size:2rem;font-weight:600;line-height:1;letter-spacing:-.02em;color:var(--ink)}
+.hs-l{font-size:.72rem;color:var(--ink-3);margin-top:.3rem;font-weight:500}
+
+/* hero card */
+.h-card{background:var(--white);border:1px solid var(--border);border-radius:24px;padding:2.2rem;box-shadow:var(--sh-l);position:relative;overflow:hidden;opacity:0;animation:fr .8s .5s forwards}
+.h-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-lt),transparent)}
+.hc-av{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#1c1a17,#3d3830);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--gold-lt);margin-bottom:1.25rem;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.hc-n{font-family:var(--serif);font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.15rem}
+.hc-r{font-size:.75rem;color:var(--gold);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.5rem}
+.hc-div{height:1px;background:var(--border);margin-bottom:1.4rem}
+.hc-rows{display:flex;flex-direction:column;gap:.85rem;margin-bottom:1.4rem}
+.hc-row{display:flex;align-items:center;gap:.75rem}
+.hc-ic{width:32px;height:32px;border-radius:8px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
+.rl{font-size:.68rem;color:var(--ink-3);font-weight:500}
+.rv{font-size:.82rem;font-weight:600;color:var(--ink)}
+.hc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.4rem}
+.hc-tag{padding:.25rem .7rem;background:var(--gold-bg);border:1px solid rgba(160,120,64,.15);border-radius:50px;font-size:.68rem;font-weight:600;color:var(--gold)}
+.hc-rate{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1rem;background:var(--bg);border-radius:12px;border:1px solid var(--border)}
+.hr-t{font-size:.72rem;color:var(--ink-3);font-weight:500}
+.hr-p{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--ink)}
+.hr-b{font-size:.65rem;font-weight:600;color:#3cbc74;background:rgba(60,188,116,.1);padding:.2rem .55rem;border-radius:50px}
+
+/* ── ABOUT ── */
+#about{background:var(--white)}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ab-img{position:sticky;top:calc(var(--nh) + 2rem)}
+.ab-frame{background:var(--bg-alt);border-radius:24px;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center;font-size:5rem;border:1px solid var(--border);position:relative;overflow:hidden;box-shadow:var(--sh-m)}
+.ab-frame::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,transparent 40%,rgba(160,120,64,.07))}
+.ab-yr{position:absolute;bottom:1.5rem;left:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.9rem 1.1rem;box-shadow:var(--sh-m)}
+.ab-yr .y{font-family:var(--serif);font-size:1.5rem;font-weight:600;color:var(--ink);line-height:1}
+.ab-yr .yl{font-size:.65rem;color:var(--ink-3);font-weight:500;margin-top:.2rem}
+.ab-sc{position:absolute;top:1.5rem;right:1.5rem;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:.7rem 1rem;display:flex;align-items:center;gap:.6rem;box-shadow:var(--sh-m)}
+.ab-sc .st{font-size:.85rem;letter-spacing:.05em}
+.ab-sc .sl{font-size:.68rem;color:var(--ink-3);font-weight:500}
+.ab-sc .sn{font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--ink)}
+.ab-txt p{font-size:.97rem;color:var(--ink-2);line-height:1.85;margin-bottom:1.2rem}
+.ab-txt p strong{color:var(--ink);font-weight:600}
+blockquote.pq{font-family:var(--serif);font-size:1.15rem;font-style:italic;font-weight:300;color:var(--ink);border-left:2px solid var(--gold);padding:1rem 0 1rem 1.5rem;margin:1.75rem 0;line-height:1.65}
+.chk-list{display:flex;flex-direction:column;gap:.7rem;margin-top:1.5rem}
+.chk{display:flex;align-items:center;gap:.7rem;font-size:.88rem;color:var(--ink-2)}
+.chk-ic{width:22px;height:22px;border-radius:50%;background:var(--gold-bg);border:1px solid rgba(160,120,64,.2);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gold);flex-shrink:0}
+
+/* ── SERVICES ── */
+#services{background:var(--bg)}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.sv-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:2rem 1.8rem;position:relative;overflow:hidden;transition:box-shadow .3s,transform .3s,border-color .3s}
+.sv-card:hover{box-shadow:var(--sh-m);transform:translateY(-4px);border-color:rgba(160,120,64,.2)}
+.sv-n{font-family:var(--serif);font-size:3.5rem;font-weight:700;color:rgba(14,13,12,.04);position:absolute;top:.5rem;right:1.25rem;line-height:1;pointer-events:none;transition:color .3s}
+.sv-card:hover .sv-n{color:rgba(160,120,64,.07)}
+.sv-ic{width:44px;height:44px;border-radius:12px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:1.2rem}
+.sv-card h3{font-family:var(--serif);font-size:1.1rem;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem}
+.sv-card p{font-size:.86rem;color:var(--ink-3);line-height:1.75}
+.sv-tag{display:inline-block;margin-top:1.1rem;font-size:.66rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(160,120,64,.3);padding-bottom:1px}
+
+/* ── TOOLS ── */
+#tools{background:var(--white)}
+.tl-cats{display:flex;flex-direction:column;gap:2.5rem}
+.tl-cat-lbl{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.9rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.tl-row{display:flex;flex-wrap:wrap;gap:.65rem}
+.tc{display:inline-flex;align-items:center;gap:.55rem;padding:.6rem 1rem;background:var(--bg);border:1px solid var(--border);border-radius:50px;font-size:.8rem;font-weight:500;color:var(--ink-2);cursor:default;transition:all .22s ease}
+.tc:hover{border-color:var(--gold);background:var(--gold-bg);color:var(--ink);transform:translateY(-2px);box-shadow:var(--sh-s)}
+.tc .ti{font-size:1rem}
+
+/* ── PORTFOLIO ── */
+#portfolio{background:var(--bg)}
+.po-grid{display:flex;flex-direction:column;gap:1.5rem}
+.po-card{display:grid;grid-template-columns:340px 1fr;background:var(--white);border:1px solid var(--border);border-radius:22px;overflow:hidden;transition:box-shadow .3s,transform .3s}
+.po-card:hover{box-shadow:var(--sh-l);transform:translateY(-3px)}
+.po-thumb{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;padding:1.75rem;position:relative;min-height:240px}
+.pt1{background:linear-gradient(160deg,#12110f,#1e1b16)}
+.pt2{background:linear-gradient(160deg,#0a1628,#132240)}
+.pt3{background:linear-gradient(160deg,#111a12,#1e2e1f)}
+.po-thumb::before{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 60%)}
+.po-em{position:absolute;top:1.75rem;right:1.75rem;font-size:2.5rem;opacity:.35}
+.po-type{position:relative;z-index:1;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:.4rem}
+.po-tit{position:relative;z-index:1;font-family:var(--serif);font-size:1.3rem;font-weight:600;color:#fff;line-height:1.2}
+.po-body{padding:2rem 2.2rem;display:flex;flex-direction:column;justify-content:space-between}
+.po-res{display:flex;gap:2rem;margin-bottom:1.5rem}
+.pr{display:flex;flex-direction:column}
+.pr-n{font-family:var(--serif);font-size:1.6rem;font-weight:600;color:var(--ink);line-height:1}
+.pr-l{font-size:.68rem;color:var(--ink-3);margin-top:.2rem}
+.po-div{height:1px;background:var(--border);margin:1.2rem 0}
+.po-body p{font-size:.88rem;color:var(--ink-2);line-height:1.75}
+.po-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.po-tg{font-size:.66rem;font-weight:600;letter-spacing:.04em;padding:.28rem .7rem;border-radius:50px;background:var(--bg);border:1px solid var(--border);color:var(--ink-3)}
+
+/* ── PROCESS ── */
+#process{background:var(--ink)}
+.pr-hd{margin-bottom:4rem}
+.pr-hd .ey{color:var(--gold-lt)}
+.pr-hd .ey::before{background:var(--gold-lt)}
+.pr-hd h2.sh{color:var(--bg)}
+.pr-hd .sub{color:rgba(247,245,240,.45)}
+.pr-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(247,245,240,.07);border:1px solid rgba(247,245,240,.07);border-radius:var(--r);overflow:hidden}
+.pr-step{background:var(--ink);padding:2.2rem 1.8rem;transition:background .25s}
+.pr-step:hover{background:#141311}
+.pr-nm{font-family:var(--serif);font-size:3rem;font-weight:700;color:rgba(247,245,240,.05);line-height:1;margin-bottom:.8rem}
+.pr-ic{font-size:1.5rem;margin-bottom:1rem}
+.pr-step h4{font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--bg);margin-bottom:.5rem}
+.pr-step p{font-size:.83rem;color:rgba(247,245,240,.45);line-height:1.7}
+
+/* ── CONTACT ── */
+#contact{background:var(--white)}
+.ct-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.ct-links{display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem}
+.cl{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.25rem;border:1px solid var(--border);border-radius:var(--r);transition:all .25s ease;color:var(--ink)}
+.cl:hover{border-color:rgba(160,120,64,.3);background:var(--gold-bg);transform:translateX(4px)}
+.cl-ic{width:40px;height:40px;border-radius:10px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.cl-lb{font-size:.68rem;color:var(--ink-3);font-weight:500;margin-bottom:.1rem}
+.cl-vl{font-size:.88rem;font-weight:600;color:var(--ink)}
+.av-ban{padding:1.2rem 1.4rem;background:rgba(60,188,116,.06);border:1px solid rgba(60,188,116,.2);border-radius:var(--rs);display:flex;align-items:center;gap:.75rem}
+.av-dot{width:8px;height:8px;border-radius:50%;background:#3cbc74;flex-shrink:0;box-shadow:0 0 0 4px rgba(60,188,116,.15);animation:pulse 2s infinite}
+.av-ban p{font-size:.82rem;color:#2a7a4a;font-weight:500}
+.cf{display:flex;flex-direction:column;gap:.9rem}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+.fg{display:flex;flex-direction:column;gap:.4rem}
+.fg label{font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.fg input,.fg textarea,.fg select{padding:.8rem 1rem;background:var(--bg);border:1px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:.88rem;color:var(--ink);outline:none;transition:border-color .2s,box-shadow .2s;resize:none}
+.fg input:focus,.fg textarea:focus,.fg select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(160,120,64,.1)}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--ink-3)}
+.fg select option{background:var(--bg)}
+.btn-send{background:var(--ink);color:var(--bg);padding:.9rem 2rem;border-radius:50px;font-family:var(--sans);font-size:.85rem;font-weight:600;cursor:pointer;border:none;width:100%;display:flex;justify-content:center;align-items:center;transition:background .25s,transform .25s,box-shadow .25s;letter-spacing:.01em}
+.btn-send:hover{background:var(--gold);transform:translateY(-2px);box-shadow:0 8px 24px rgba(160,120,64,.3)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:rgba(247,245,240,.35);padding:2.5rem clamp(1.5rem,5vw,4rem);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.78rem}
+.f-lg{font-family:var(--serif);font-size:1.1rem;font-weight:600;color:var(--bg)}
+.f-lg em{font-style:italic;color:var(--gold-lt)}
+footer a{color:var(--gold-lt);transition:opacity .2s}
+footer a:hover{opacity:.75}
+
+/* ── ANIMATIONS ── */
+@keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fr{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:none}
+.sg>*{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease}
+.sg.in>*:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+.sg.in>*:nth-child(2){opacity:1;transform:none;transition-delay:.1s}
+.sg.in>*:nth-child(3){opacity:1;transform:none;transition-delay:.16s}
+.sg.in>*:nth-child(4){opacity:1;transform:none;transition-delay:.22s}
+.sg.in>*:nth-child(5){opacity:1;transform:none;transition-delay:.28s}
+.sg.in>*:nth-child(6){opacity:1;transform:none;transition-delay:.34s}
+.sg.in>*:nth-child(7){opacity:1;transform:none;transition-delay:.4s}
+.sg.in>*:nth-child(8){opacity:1;transform:none;transition-delay:.46s}
+.sg.in>*:nth-child(n+9){opacity:1;transform:none;transition-delay:.52s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .h-inner{grid-template-columns:1fr}
+  .h-card{display:none}
+  .ab-grid{grid-template-columns:1fr}
+  .ab-img{position:static}
+  .sv-grid{grid-template-columns:1fr 1fr}
+  .pr-steps{grid-template-columns:1fr 1fr}
+  .po-card{grid-template-columns:1fr}
+  .ct-wrap{grid-template-columns:1fr;gap:3rem}
+}
+@media(max-width:640px){
+  section{padding:5rem 0}
+  .sv-grid{grid-template-columns:1fr}
+  .pr-steps{grid-template-columns:1fr}
+  .cf-row{grid-template-columns:1fr}
+  .h-stats{flex-direction:column;gap:1.25rem}
+  .hs{border-right:none;padding-right:0;margin-right:0;border-bottom:1px solid var(--border);padding-bottom:1.25rem}
+  .hs:last-child{border-bottom:none;padding-bottom:0}
+  .po-res{gap:1.25rem}
+  footer{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="cur"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="n-logo">George <em>Vinarao</em></a>
+  <ul class="n-links" id="nl">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#tools">Tools</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#contact" class="n-hire">Hire Me</a></li>
+  </ul>
+  <button class="ham" id="ham" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="wrap">
+    <div class="h-inner">
+      <div class="h-left">
+        <div class="avail-chip">
+          <span class="a-dot"></span>
+          Open to new clients — limited slots available
+        </div>
+        <h1 class="hh">
+          Shopify Support<br>that<em>actually works.</em>
+        </h1>
+        <p class="h-desc">
+          Hi, I'm George — a dedicated Shopify VA based in the Philippines. I take the daily grind off your plate so you can run your store with less stress and more focus on growth.
+        </p>
+        <div class="h-acts">
+          <a href="#contact" class="btn btn-dk">Start Working Together →</a>
+          <a href="#portfolio" class="btn btn-gh">See My Work</a>
+        </div>
+        <div class="h-stats">
+          <div class="hs">
+            <div class="hs-n">50+</div>
+            <div class="hs-l">Stores Supported</div>
+          </div>
+          <div class="hs">
+            <div class="hs-n">3 yrs</div>
+            <div class="hs-l">Experience</div>
+          </div>
+          <div class="hs">
+            <div class="hs-n">98%</div>
+            <div class="hs-l">Client Satisfaction</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- profile card -->
+      <div class="h-card">
+        <div class="hc-av">GV</div>
+        <div class="hc-n">George Vinarao</div>
+        <div class="hc-r">Shopify E-commerce VA</div>
+        <div class="hc-div"></div>
+        <div class="hc-rows">
+          <div class="hc-row">
+            <div class="hc-ic">📍</div>
+            <div><div class="rl">Location</div><div class="rv">Philippines (GMT+8)</div></div>
+          </div>
+          <div class="hc-row">
+            <div class="hc-ic">🕐</div>
+            <div><div class="rl">Response Time</div><div class="rv">Within 2–4 hours</div></div>
+          </div>
+          <div class="hc-row">
+            <div class="hc-ic">🌐</div>
+            <div><div class="rl">Works With</div><div class="rv">Clients worldwide</div></div>
+          </div>
+          <div class="hc-row">
+            <div class="hc-ic">⭐</div>
+            <div><div class="rl">Client Rating</div><div class="rv">4.9 / 5.0 (42 reviews)</div></div>
+          </div>
+        </div>
+        <div class="hc-tags">
+          <span class="hc-tag">Store Setup</span>
+          <span class="hc-tag">Customer Support</span>
+          <span class="hc-tag">Order Management</span>
+          <span class="hc-tag">Email Marketing</span>
+          <span class="hc-tag">Product SEO</span>
+        </div>
+        <div class="hc-rate">
+          <div>
+            <div class="hr-t">Starting Rate</div>
+            <div class="hr-p">$6 / hour</div>
+          </div>
+          <span class="hr-b">✓ Available Now</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="ab-grid">
+      <div class="ab-img rv">
+        <div class="ab-frame">
+          <span style="position:relative;z-index:1">🛍️</span>
+          <div class="ab-yr">
+            <div class="y">3+</div>
+            <div class="yl">Years of Experience</div>
+          </div>
+          <div class="ab-sc">
+            <div>
+              <div class="st">★★★★★</div>
+              <div class="sl">Avg. Rating</div>
+            </div>
+            <div class="sn">4.9</div>
+          </div>
+        </div>
+      </div>
+      <div class="ab-txt rv">
+        <div class="ey">A bit about me</div>
+        <h2 class="sh">The VA who treats your store <em>like their own.</em></h2>
+        <p>I'm George — a Shopify-focused virtual assistant with over three years of hands-on experience helping e-commerce brands run smoother, grow faster, and deliver better customer experiences.</p>
+        <p>I work with solo founders, small brands, and growing stores who need a <strong>reliable, detail-oriented partner</strong> they can trust — not a freelancer who disappears after a week.</p>
+        <blockquote class="pq">"I don't just complete tasks. I pay attention to what's not working, flag what I notice, and think ahead so you don't have to."</blockquote>
+        <p>My background covers everything from Shopify store builds and product management to customer support and email automation. I communicate clearly, work independently, and always meet deadlines.</p>
+        <div class="chk-list">
+          <div class="chk"><span class="chk-ic">✓</span> Available for part-time or full-time engagements</div>
+          <div class="chk"><span class="chk-ic">✓</span> Clear weekly updates and Loom video walkthroughs</div>
+          <div class="chk"><span class="chk-ic">✓</span> Long-term partnerships preferred — I grow with your brand</div>
+          <div class="chk"><span class="chk-ic">✓</span> NDA-ready and GDPR-aware data handling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="wrap">
+    <div class="rv">
+      <div class="ey">What I do</div>
+      <h2 class="sh">Every service your store <em>needs to run.</em></h2>
+      <p class="sub">End-to-end Shopify support so you never have to wear every hat at once.</p>
+    </div>
+    <div class="sv-grid sg">
+      <div class="sv-card">
+        <div class="sv-n">01</div>
+        <div class="sv-ic">🛒</div>
+        <h3>Store Setup &amp; Management</h3>
+        <p>Theme customization, product uploads, navigation, apps, and payment setup — done right the first time.</p>
+        <span class="sv-tag">Most Popular</span>
+      </div>
+      <div class="sv-card">
+        <div class="sv-n">02</div>
+        <div class="sv-ic">📦</div>
+        <h3>Order &amp; Inventory Management</h3>
+        <p>Fulfillment processing, tracking updates, supplier coordination, and stock monitoring handled daily.</p>
+        <span class="sv-tag">Operations</span>
+      </div>
+      <div class="sv-card">
+        <div class="sv-n">03</div>
+        <div class="sv-ic">💬</div>
+        <h3>Customer Support</h3>
+        <p>Email, live chat, and social DMs handled with care — refunds, disputes, and follow-ups included.</p>
+        <span class="sv-tag">High Impact</span>
+      </div>
+      <div class="sv-card">
+        <div class="sv-n">04</div>
+        <div class="sv-ic">📝</div>
+        <h3>Product Listing &amp; SEO</h3>
+        <p>SEO-optimized product copy, proper tagging, metafields, and collections that help customers find what they want.</p>
+        <span class="sv-tag">Conversion</span>
+      </div>
+      <div class="sv-card">
+        <div class="sv-n">05</div>
+        <div class="sv-ic">📧</div>
+        <h3>Email Marketing</h3>
+        <p>Klaviyo and Omnisend flows, campaign setup, list hygiene, and subscriber growth — all managed for you.</p>
+        <span class="sv-tag">Revenue Driver</span>
+      </div>
+      <div class="sv-card">
+        <div class="sv-n">06</div>
+        <div class="sv-ic">📊</div>
+        <h3>Reporting &amp; Analytics</h3>
+        <p>Weekly performance snapshots, top-selling product breakdowns, and actionable insights in plain language.</p>
+        <span class="sv-tag">Clarity</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="wrap">
+    <div class="rv">
+      <div class="ey">My toolkit</div>
+      <h2 class="sh">Fluent in the tools <em>you already use.</em></h2>
+      <p class="sub">No onboarding headache — I hit the ground running with the platforms that power modern e-commerce.</p>
+    </div>
+    <div class="tl-cats rv">
+      <div>
+        <div class="tl-cat-lbl">E-commerce Platform</div>
+        <div class="tl-row">
+          <span class="tc"><span class="ti">🛍️</span> Shopify</span>
+          <span class="tc"><span class="ti">🔌</span> Shopify Plus</span>
+          <span class="tc"><span class="ti">🔗</span> DSers</span>
+          <span class="tc"><span class="ti">📤</span> Oberlo</span>
+        </div>
+      </div>
+      <div>
+        <div class="tl-cat-lbl">Customer Support</div>
+        <div class="tl-row">
+          <span class="tc"><span class="ti">🎧</span> Gorgias</span>
+          <span class="tc"><span class="ti">💼</span> Zendesk</span>
+          <span class="tc"><span class="ti">💬</span> Freshdesk</span>
+          <span class="tc"><span class="ti">🤝</span> Re:amaze</span>
+        </div>
+      </div>
+      <div>
+        <div class="tl-cat-lbl">Email &amp; Marketing</div>
+        <div class="tl-row">
+          <span class="tc"><span class="ti">📬</span> Klaviyo</span>
+          <span class="tc"><span class="ti">🎯</span> Omnisend</span>
+          <span class="tc"><span class="ti">✉️</span> Mailchimp</span>
+          <span class="tc"><span class="ti">🔔</span> SMSBump</span>
+        </div>
+      </div>
+      <div>
+        <div class="tl-cat-lbl">Project Management &amp; Communication</div>
+        <div class="tl-row">
+          <span class="tc"><span class="ti">📋</span> Trello</span>
+          <span class="tc"><span class="ti">✅</span> Asana</span>
+          <span class="tc"><span class="ti">🗂️</span> Notion</span>
+          <span class="tc"><span class="ti">💬</span> Slack</span>
+          <span class="tc"><span class="ti">📄</span> Google Workspace</span>
+          <span class="tc"><span class="ti">🎨</span> Canva</span>
+          <span class="tc"><span class="ti">🎥</span> Loom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="wrap">
+    <div class="rv">
+      <div class="ey">Selected Work</div>
+      <h2 class="sh">Real results for <em>real stores.</em></h2>
+      <p class="sub">A few snapshots of what I've built, managed, and improved for past clients.</p>
+    </div>
+    <div class="po-grid sg">
+      <div class="po-card">
+        <div class="po-thumb pt1">
+          <span class="po-em">🖤</span>
+          <div class="po-type">Store Setup</div>
+          <div class="po-tit">Fashion Boutique<br>— Full Build</div>
+        </div>
+        <div class="po-body">
+          <div>
+            <div class="po-res">
+              <div class="pr"><span class="pr-n">120+</span><span class="pr-l">Products Listed</span></div>
+              <div class="pr"><span class="pr-n">14 days</span><span class="pr-l">Launch Timeline</span></div>
+              <div class="pr"><span class="pr-n">4.8★</span><span class="pr-l">Store Rating</span></div>
+            </div>
+            <div class="po-div"></div>
+            <p>Full Shopify 2.0 setup for a women's apparel brand — custom theme configuration, 120+ SEO-optimized product listings, collection architecture, payment gateways, and app integrations. Launched on schedule with zero hiccups.</p>
+          </div>
+          <div class="po-tags">
+            <span class="po-tg">Shopify 2.0</span>
+            <span class="po-tg">Product Upload</span>
+            <span class="po-tg">Theme Customization</span>
+            <span class="po-tg">App Setup</span>
+          </div>
+        </div>
+      </div>
+      <div class="po-card">
+        <div class="po-thumb pt2">
+          <span class="po-em">📦</span>
+          <div class="po-type">Operations</div>
+          <div class="po-tit">Dropshipping Store<br>— Ongoing Management</div>
+        </div>
+        <div class="po-body">
+          <div>
+            <div class="po-res">
+              <div class="pr"><span class="pr-n">200+</span><span class="pr-l">Tickets / Month</span></div>
+              <div class="pr"><span class="pr-n">&lt;2 hrs</span><span class="pr-l">Avg. Response</span></div>
+              <div class="pr"><span class="pr-n">4.9★</span><span class="pr-l">Store Rating</span></div>
+            </div>
+            <div class="po-div"></div>
+            <p>Managed daily order fulfillment via DSers, handled 200+ monthly customer inquiries through Gorgias, and maintained a near-perfect store rating through proactive communication and fast dispute resolution.</p>
+          </div>
+          <div class="po-tags">
+            <span class="po-tg">Gorgias</span>
+            <span class="po-tg">DSers</span>
+            <span class="po-tg">Order Management</span>
+            <span class="po-tg">Customer Service</span>
+          </div>
+        </div>
+      </div>
+      <div class="po-card">
+        <div class="po-thumb pt3">
+          <span class="po-em">🌿</span>
+          <div class="po-type">Email Marketing</div>
+          <div class="po-tit">Wellness Brand<br>— Klaviyo Setup</div>
+        </div>
+        <div class="po-body">
+          <div>
+            <div class="po-res">
+              <div class="pr"><span class="pr-n">18%</span><span class="pr-l">Cart Recovery</span></div>
+              <div class="pr"><span class="pr-n">5 flows</span><span class="pr-l">Automated</span></div>
+              <div class="pr"><span class="pr-n">60 days</span><span class="pr-l">To Results</span></div>
+            </div>
+            <div class="po-div"></div>
+            <p>Built a complete Klaviyo automation system — 5-step welcome series, abandoned cart recovery, post-purchase follow-up, and winback flow. Recovered an estimated 18% of abandoned carts within the first 60 days of going live.</p>
+          </div>
+          <div class="po-tags">
+            <span class="po-tg">Klaviyo</span>
+            <span class="po-tg">Email Flows</span>
+            <span class="po-tg">Segmentation</span>
+            <span class="po-tg">Cart Recovery</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <div class="pr-hd rv">
+      <div class="ey">How it works</div>
+      <h2 class="sh">Simple onboarding. <em>Fast results.</em></h2>
+      <p class="sub">Getting started is easy — most clients are up and running within 48 hours.</p>
+    </div>
+    <div class="pr-steps sg">
+      <div class="pr-step">
+        <div class="pr-nm">01</div>
+        <div class="pr-ic">💬</div>
+        <h4>Discovery Call</h4>
+        <p>We hop on a quick 30-min call to talk about your store, what you need, and how I can help. No pressure, no pitch.</p>
+      </div>
+      <div class="pr-step">
+        <div class="pr-nm">02</div>
+        <div class="pr-ic">📋</div>
+        <h4>Scope &amp; Proposal</h4>
+        <p>I send you a clear proposal — scope, rate, timeline, and tools. You approve, we sign, and we're off.</p>
+      </div>
+      <div class="pr-step">
+        <div class="pr-nm">03</div>
+        <div class="pr-ic">🚀</div>
+        <h4>Onboarding</h4>
+        <p>You share store access, I set up comms channels, review your workflows, and get to work — usually within 24 hours.</p>
+      </div>
+      <div class="pr-step">
+        <div class="pr-nm">04</div>
+        <div class="pr-ic">📈</div>
+        <h4>Ongoing Support</h4>
+        <p>Weekly updates, Loom walkthroughs, and regular check-ins keep us aligned. I grow with your store over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="ct-wrap">
+      <div class="rv">
+        <div class="ey">Let's connect</div>
+        <h2 class="sh">Ready to get some <em>weight off your shoulders?</em></h2>
+        <p class="sub">Fill out the form or reach out directly. I usually reply within a few hours.</p>
+        <div class="ct-links">
+          <a href="mailto:george.vinarao@email.com" class="cl">
+            <div class="cl-ic">📧</div>
+            <div><div class="cl-lb">Email</div><div class="cl-vl">george.vinarao@email.com</div></div>
+          </a>
+          <a href="https://wa.me/639000000000" class="cl" target="_blank" rel="noopener">
+            <div class="cl-ic">📱</div>
+            <div><div class="cl-lb">WhatsApp</div><div class="cl-vl">+63 900 000 0000</div></div>
+          </a>
+          <a href="https://linkedin.com/in/georgevinarao" class="cl" target="_blank" rel="noopener">
+            <div class="cl-ic">🔗</div>
+            <div><div class="cl-lb">LinkedIn</div><div class="cl-vl">linkedin.com/in/georgevinarao</div></div>
+          </a>
+          <a href="#" class="cl">
+            <div class="cl-ic">💼</div>
+            <div><div class="cl-lb">Upwork</div><div class="cl-vl">View My Upwork Profile →</div></div>
+          </a>
+        </div>
+        <div class="av-ban">
+          <span class="av-dot"></span>
+          <p><strong>Currently available</strong> for new clients — 2 slots open this month.</p>
+        </div>
+      </div>
+      <div class="rv">
+        <div class="cf">
+          <div class="cf-row">
+            <div class="fg">
+              <label>Your Name</label>
+              <input type="text" placeholder="Jane Smith"/>
+            </div>
+            <div class="fg">
+              <label>Email Address</label>
+              <input type="email" placeholder="jane@store.com"/>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Store URL (optional)</label>
+            <input type="text" placeholder="mystore.myshopify.com"/>
+          </div>
+          <div class="fg">
+            <label>I need help with</label>
+            <select>
+              <option value="" disabled selected>Select a service…</option>
+              <option>Store Setup &amp; Management</option>
+              <option>Order &amp; Inventory Management</option>
+              <option>Customer Support</option>
+              <option>Product Listing &amp; SEO</option>
+              <option>Email Marketing (Klaviyo / Omnisend)</option>
+              <option>Reporting &amp; Analytics</option>
+              <option>Something Else</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Tell me about your store</label>
+            <textarea rows="5" placeholder="What does your store sell, how big is your team, and what's your biggest pain point right now?"></textarea>
+          </div>
+          <button class="btn-send" onclick="sendMsg(this)">Send Message →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="f-lg">George <em>Vinarao</em></span>
+  <span>© 2025 · Shopify E-commerce Virtual Assistant</span>
+  <span>Based in Philippines · Working worldwide · <a href="#contact">Let's talk →</a></span>
+</footer>
+
+<script>
+// progress bar
+const bar = document.getElementById('prog');
+window.addEventListener('scroll', () => {
+  bar.style.width = (scrollY / (document.body.scrollHeight - innerHeight) * 100) + '%';
+});
+
+// nav shadow
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 30));
+
+// hamburger
+const ham = document.getElementById('ham'), nl = document.getElementById('nl');
+ham.addEventListener('click', () => {
+  const open = nl.classList.toggle('open');
+  const [s1,,s3] = ham.querySelectorAll('span');
+  ham.querySelectorAll('span')[1].style.opacity = open ? '0' : '1';
+  s1.style.transform = open ? 'translateY(6.5px) rotate(45deg)' : '';
+  s3.style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : '';
+});
+nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nl.classList.remove('open');
+  ham.querySelectorAll('span').forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+}));
+
+// cursor
+const cur = document.getElementById('cur');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX - 4 + 'px';
+  cur.style.top  = e.clientY - 4 + 'px';
+});
+document.querySelectorAll('a,button,.tc,.sv-card,.po-card').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.style.transform = 'scale(3.5)');
+  el.addEventListener('mouseleave', () => cur.style.transform = '');
+});
+
+// scroll reveal
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.rv,.sg').forEach(el => obs.observe(el));
+
+// form send
+function sendMsg(btn) {
+  const form = btn.closest('.cf');
+  const name  = form.querySelector('input[type=text]').value.trim();
+  const email = form.querySelector('input[type=email]').value.trim();
+  if (!name || !email) {
+    btn.textContent = '⚠️ Please fill in your name and email.';
+    btn.style.background = '#9a3a3a';
+    setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; }, 2500);
+    return;
+  }
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = "✓ Sent! I'll reply within a few hours.";
+    btn.style.background = '#2a7a4a'; btn.disabled = false;
+  }, 1100);
+}
+</script>
+</body>
+</html>
